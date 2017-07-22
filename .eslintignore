@@ -1,0 +1,6 @@
+dist
+_dist
+bin
+public
+node_modules
+package-lock.json
