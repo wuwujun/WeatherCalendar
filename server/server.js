@@ -5,7 +5,9 @@ const router = require('./router');
 const logger = require('./logger');
 
 const onError = (err) => {
-  logger.error('router error:', err);
+  if (err) {
+    logger.error('router error:', err);
+  }
 };
 
 const main = (req, res) => {

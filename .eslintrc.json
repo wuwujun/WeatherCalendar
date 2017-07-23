@@ -5,7 +5,17 @@
     "es6": true
   },
   "rules": {
+    "comma-dangle": ["error", {
+      "arrays": "always-multiline",
+      "objects": "ignore",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "ignore"
+    }],
     "no-param-reassign": "off",
-    "react/require-default-props": "off"
+    "no-mixed-operators": "off",
+    "react/require-default-props": "off",
+    "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
+    "react/forbid-prop-types": ["error", { "forbid": ["any"] }]
   }
 }

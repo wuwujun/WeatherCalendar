@@ -36,6 +36,7 @@ if (config.isDev) {
   const devServer = new WebpackDevServer(compiler, {
     // hot: true,
     disableHostCheck: true,
+    historyApiFallback: true,
     contentBase: config.outputdir,
     // publicPath: config.publicpath,
     stats: {
