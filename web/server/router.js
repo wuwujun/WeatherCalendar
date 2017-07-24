@@ -17,9 +17,7 @@ if (config.isDev) {
 }
 
 const staticResource = st(stOpts);
-router.set('/*', (req, res) => {
-  staticResource(req, res);
-});
+router.set('/*', staticResource);
 
 router.set('/api/xinzhi/*', xinzhiAuth(hyperdataApi));
 

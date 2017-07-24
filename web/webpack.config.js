@@ -21,6 +21,7 @@ const htmlConfig = name => new HtmlWebpackPlugin({
   filename: `${name}.html`,
   // chunks: [name],
   template: `src/${name}/template.ejs`,
+  favicon: 'favicon.ico',
 });
 
 const babelLoader = {
@@ -85,7 +86,7 @@ const baseConfig = {
       test: /\.json$/,
       use: 'json-loader',
     }, {
-      test: /\.(icon|jpg|png|gif|webp|svg)(\?.*)?$/,
+      test: /\.(ico|jpg|png|gif|webp|svg)(\?.*)?$/,
       use: `file-loader?name=${bundlename}`,
     }],
   },

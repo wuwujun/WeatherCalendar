@@ -1,0 +1,350 @@
+html {
+  font-size: 20px;
+  font-size: 6vw;
+  line-height: 1.5;
+  font-family: Helvetica, arial, "Microsoft YaHei", "微软雅黑", "Noto Sans CJK", "Noto Sans", sans-serif;
+}
+
+body {
+  color: #dedede;
+  background-color: #555;
+}
+button {
+  display: block;
+  outline: none;
+  box-shadow: none;
+  border: 0 none;
+  width: 100%;
+  color: #fff;
+  background-color: transparent;
+}
+h1, h2, h3 {
+  margin: 0;
+}
+
+/* flex */
+.row {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+}
+.row > .item,
+.row > .space {
+  display: block;
+  align-self: center;
+}
+.row > .item {
+  flex: 0 1;
+}
+.row > .space {
+  flex: 1 0;
+}
+.row > .item.raw {
+  flex: initial;
+}
+
+/* list */
+ul, ol, li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* weather panel */
+.weather-container {
+  padding: 0 1rem;
+}
+.weather-container > * {
+  margin: .5rem -1rem;
+  padding: .25rem 1rem;
+}
+.weather-container > *:first-child {
+  margin-top: 0;
+}
+.weather-container > *:last-child {
+  margin-bottom: 0;
+}
+.weather-container > *:nth-child(2n+1) {
+  color: #fff;
+  background-color: #999;
+}
+
+.weather-container > header {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.weather-container .city-name {
+  padding: 0;
+  margin: 0;
+  line-height: 2.5rem;
+  font-size: 1.5rem;
+  font-weight: normal;
+  vertical-align: middle;
+}
+a.goto-city-select {
+  display: block;
+  margin-right: -1rem;
+  color: #e8e8e8;
+  padding: .75rem;
+  text-decoration: none;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  /* vertical-align: middle; */
+}
+a.goto-city-select:focus,
+a.goto-city-select:hover {
+  background-color: #e8e8e8;
+}
+a.goto-city-select:focus,
+a.goto-city-select:hover,
+a.goto-city-select:link,
+a.goto-city-select:active {
+  color: #adadad;  
+  text-decoration: none;
+}
+
+.temp-current {
+  font-size: 3rem;
+}
+.temp-current-unit {
+  font-size: 1.5rem;
+}
+.cond-current {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.temp-current,
+.temp-current-unit,
+.cond-current {
+  line-height: 3rem;
+  vertical-align: baseline;
+}
+.row > .space.cond-current {
+  align-self: flex-end;
+}
+.date-current {
+  font-size: 1rem;
+  /* line-height: 1rem; */
+}
+.icon-current {
+  height: 4rem;
+  width: 4rem;
+}
+.icon-current > img {
+  width: 4rem;
+  height: 4rem;
+}
+
+.ferocast-block > .row {
+  justify-content: space-between;
+}
+.forecast {
+  /* text-align: center; */
+  font-size: .75rem;
+  white-space: nowrap;
+  word-break: keep-all;
+}
+.forecast .date {
+  margin-bottom: .25rem;
+}
+.forecast .icon {
+  height: 64px;
+  min-height: 64px;
+}
+.forecast .text {
+  color: #ccc;
+}
+
+.life-suggestion-tip {
+  margin-bottom: .5rem;
+}
+.life-suggestion {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 1rem;
+
+  font-size: .75rem;
+}
+
+/* City Select Panel */
+ul.city-select {
+  padding: 0 1rem;
+}
+ul.city-select > li {
+  margin: 0 -1rem;
+  /* padding: .5rem 1rem; */
+  border: 0 none;
+  border-bottom: 1px solid #adadad;
+}
+ul.city-select > li:not(.hide):nth-child(2n) {
+  background-color: #666;
+}
+.item-province > button,
+.item-city > button {
+  text-align: left;
+  padding: .5rem 2rem;
+}
+.item-city > button {
+  padding-left: 4rem;
+  animation: .25s linear 0s city-show;
+}
+.item-city.hide {
+  display: none;
+}
+.item-province.active > button,
+.item-city.active > button {
+  color: #000;
+  background-color: #f8f8f8;
+}
+
+@keyframes city-show {
+  from {
+    background-color: #ffe168;
+  }
+  to {
+    background-color: inherit;
+  }
+}
+
+/* Latest Tasks */
+
+.no-task-tip {
+  text-align: center;
+  margin: 0 -1rem;
+}
+.no-task-tip > button {
+  font-size: 0.75rem;
+  color: #e8e8e8;
+  padding: 1rem;
+}
+
+/* Calendar Panel */
+.calendar-op {
+  background-color: #999;
+}
+.calendar-op > button {
+  padding: .5rem .5rem;
+}
+.calendar-op > .return {
+  color: #333;
+}
+
+.calendar-month {
+  margin: 0;
+  padding: .5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+.calendar-head {
+  background-color: #777;
+  /* margin-bottom: .25rem; */
+}
+.calendar-head > button {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+}
+.calendar-day > button {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+}
+.calendar-day .date {
+  line-height: 2rem;
+}
+.calendar-day .has-task-text {
+  height: 1rem;
+  min-height: 1rem;
+  max-height: 1rem;
+  line-height: 1rem;
+  font-size: .75rem;
+  color: #ccc;
+}
+.calendar-day.has-task .date {
+  line-height: 1rem;
+}
+.calendar-day.has-task .date,
+.calendar-day.today .date {
+  font-size: .75rem;
+}
+.calendar-day.has-task > button {
+  background-color: #995;
+}
+.calendar-day.out > button {
+  color: #999;
+  background-color: #777;
+}
+.calendar-day.today > button {
+  color: #333;
+  background-color: #fff;
+}
+
+/* Task Panel */
+.task-container > header {
+  background-color: #999;  
+}
+.task-container > header button {
+  padding: .5rem .5rem;
+}
+.task-container > header .return {
+  color: #333;
+}
+
+.select-row {
+  padding: .5rem 1rem;
+}
+.select-time-hour > select,
+.select-time-minute > select {
+  width: 100%;
+  color: #fff;
+  border: 0 none;
+  outline: none;
+  text-align: center;
+  text-align-last: center;
+  background-color: transparent;
+}
+.select-time-hour > select > option,
+.select-time-minute > select > option {
+  text-align: center;
+  text-align-last: center;  
+  background-color: #777;
+}
+
+.edit-text-holder {
+  background-color: #999;
+  padding: .25rem 1rem;
+  margin-bottom: .5rem;
+}
+
+.edit-text-holder > textarea {
+  color: #fff;
+  outline: none;
+  border: 0 none;
+  width: 100%;
+  background-color: transparent;
+  resize: none;
+}
+
+.task {
+  margin: 0 1rem;
+  padding: .5rem 0;
+  border-bottom: 1px solid #ccc;
+}
+.task,
+.task > h3 {
+  font-size: .75rem;
+  font-weight: normal;
+}
+.task > h3 > button {
+  padding: .25rem .5rem;
+  font-size: .75rem;
+  white-space: nowrap;
+  word-break: keep-all;
+}
+.task > .text {
+  color: #ccc;
+}

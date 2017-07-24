@@ -14,7 +14,7 @@ const City = (props) => {
   const { raw, list, selected } = props;
 
   return (
-    <ul>
+    <ul className="city-select">
       {list.map((adcode) => {
         const ret = [];
         const prov = raw[adcode];
@@ -32,8 +32,11 @@ const City = (props) => {
               onClick={() => {
                 if (!isMc) {
                   props.toggleAccordion(adcode);
-                } else if (selected !== adcode) {
-                  props.selectCity(adcode);
+                } else {
+                  if (selected !== adcode) {
+                    props.selectCity(adcode);
+                  }
+                  props.onSelectCity(prov.coord);
                 }
               }}
             >
@@ -43,16 +46,14 @@ const City = (props) => {
         );
 
         if (isMc) return ret;
-
         return ret.concat(prov.sub.map((subcode) => {
           const city = raw[subcode];
 
-          return (
+          return prov.unfold ? (
             <li
               key={subcode}
               className={cx('item-city', {
                 active: subcode === selected,
-                hide: !prov.unfold,
               })}
             >
               <button
@@ -60,12 +61,13 @@ const City = (props) => {
                   if (selected !== subcode) {
                     props.selectCity(subcode);
                   }
+                  props.onSelectCity(city.coord);
                 }}
               >
                 {city.name}
               </button>
             </li>
-          );
+          ) : null;
         }));
       })}
     </ul>

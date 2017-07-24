@@ -11,15 +11,11 @@ const initialState = {
   suggestion: {},
 };
 
-const setFunc = tag => (state, data) => R.evolve({
-  [tag]: R.always(data),
-})(state);
-
 const handlers = {
-  [SET_NOW_DATA]: setFunc('now'),
-  [SET_FUTURE_DATA]: setFunc('future'),
-  [SET_LIFE_SUGGESTION]: setFunc('suggestion'),
+  [SET_NOW_DATA]: R.assoc('now'),
+  [SET_FUTURE_DATA]: R.assoc('future'),
+  [SET_LIFE_SUGGESTION]: R.assoc('suggestion'),
 };
 
 export default (state = initialState, action) =>
-  R.propOr(R.identity, action.type, handlers)(state, action.payload);
+  R.propOr(R.always(R.identity), action.type, handlers)(action.payload)(state);

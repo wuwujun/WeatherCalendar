@@ -12,19 +12,19 @@ const initialState = {
 };
 
 const handlers = {
-  [SET_LIST]: (state, data) => R.evolve({
-    raw: R.always(data.raw),
-    list: R.always(data.list),
-  })(state),
-  [SELECT_CITY]: (state, data) => R.evolve({
-    selected: R.always(data),
-  })(state),
-  [TOGGLE_ACCORDION]: (state, data) => R.evolve({
+  [SET_LIST]: ({ raw, list }) => R.evolve({
+    raw: R.always(raw),
+    list: R.always(list),
+  }),
+  [SELECT_CITY]: R.assoc('selected'),
+  [TOGGLE_ACCORDION]: data => R.evolve({
     raw: {
-      [data.adcode]: R.not,
+      [data]: {
+        unfold: R.not,
+      },
     },
-  })(state),
+  }),
 };
 
 export default (state = initialState, action) =>
-  R.propOr(R.identity, action.type, handlers)(state, action.payload);
+  R.propOr(R.always(R.identity), action.type, handlers)(action.payload)(state);

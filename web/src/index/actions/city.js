@@ -13,7 +13,7 @@ export const fetchCityList = cb => (dispatch) => {
     const list = R.keys(R.filter(R.propEq('level', 'province'))(data));
     dispatch({
       type: SET_LIST,
-      payload: { raw: data, list },
+      payload: { raw: R.map(R.assoc('unfold', false), data), list },
     });
     cb(null, data);
   })
