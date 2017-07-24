@@ -81,25 +81,25 @@ ul, ol, li {
   font-weight: normal;
   vertical-align: middle;
 }
+.goto-share-weather,
 a.goto-city-select {
   display: block;
-  margin-right: -1rem;
   color: #e8e8e8;
   padding: .75rem;
   text-decoration: none;
   font-size: 0.75rem;
   line-height: 1rem;
+  white-space: nowrap;
   /* vertical-align: middle; */
 }
-a.goto-city-select:focus,
-a.goto-city-select:hover {
-  background-color: #e8e8e8;
+.goto-share-weather {
+  margin-right: -1rem;
 }
 a.goto-city-select:focus,
 a.goto-city-select:hover,
 a.goto-city-select:link,
 a.goto-city-select:active {
-  color: #adadad;  
+  color: #e8e8e8;
   text-decoration: none;
 }
 
@@ -266,6 +266,7 @@ ul.city-select > li:not(.hide):nth-child(2n) {
 }
 .calendar-day.has-task .date {
   line-height: 1rem;
+  margin-bottom: 1px;
 }
 .calendar-day.has-task .date,
 .calendar-day.today .date {
@@ -285,12 +286,12 @@ ul.city-select > li:not(.hide):nth-child(2n) {
 
 /* Task Panel */
 .task-container > header {
-  background-color: #999;  
+  background-color: #999;
 }
 .task-container > header button {
   padding: .5rem .5rem;
 }
-.task-container > header .return {
+.task-container > header .return button {
   color: #333;
 }
 
@@ -310,7 +311,7 @@ ul.city-select > li:not(.hide):nth-child(2n) {
 .select-time-hour > select > option,
 .select-time-minute > select > option {
   text-align: center;
-  text-align-last: center;  
+  text-align-last: center;
   background-color: #777;
 }
 

@@ -130,7 +130,7 @@ const Task = (props) => {
             <h3 className="row">
               <div className="space">{moment(d).format('HH:mm')}</div>
               <button
-                className="item edit-task"
+                className="item delete-task"
                 onClick={() => {
                   props.delTask(d);
                 }}

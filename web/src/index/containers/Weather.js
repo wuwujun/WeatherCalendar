@@ -6,6 +6,7 @@ import moment from 'moment';
 import Link from 'react-router-dom/Link';
 import iconMap from '../utils/weatherIconMap';
 import digitMap from '../utils/digitMap';
+import bridge from '../utils/bridge';
 
 const Weather = (props) => {
   const { now, future, suggestion: su, city, task } = props;
@@ -24,6 +25,23 @@ const Weather = (props) => {
         </h1>
         <div className="item raw">
           <Link to="/city" className="goto-city-select">切换城市</Link>
+        </div>
+        <div className="item raw">
+          <button
+            className="goto-share-weather"
+            onClick={() => {
+              const day = future[0];
+              const text = [
+                `${today.format('M月D日')} 星期${digitMap(today.weekday(), 'week')} ${city.name} 天气状况：`,
+                `白天 ${day.text_day} 最高温度${day.high}℃`,
+                `夜间 ${day.text_night} 最低温度${day.low}℃`,
+                `紫外线${su.uv.brief} ${su.sport.brief}运动 ${su.travel.brief}旅游`,
+              ].join('\n');
+              bridge.shareText(text);
+            }}
+          >
+            分享天气
+          </button>
         </div>
       </header>
       <section className="line current-block">
@@ -103,7 +121,13 @@ const Weather = (props) => {
           const t = moment(ta.time);
           return (
             <article key={ta.time} className="task">
-              <h3>{t.format('YYYY年M月D日 星期')}{digitMap(t.weekday(), 'week')}{t.format(' HH:mm')}</h3>
+              <h3 className="row">
+                <div className="space">{t.format('YYYY年M月D日 星期')}{digitMap(t.weekday(), 'week')}{t.format(' HH:mm')}</div>
+                <button
+                  className="item"
+                  onClick={() => bridge.addEvent(+ta.time, ta.text)}
+                >提醒</button>
+              </h3>
               <div className="text">{ta.text}</div>
             </article>
           );
