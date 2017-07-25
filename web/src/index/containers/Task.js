@@ -34,7 +34,7 @@ const Task = (props) => {
 
               const t = moment(current);
               t.hour(edit.hour);
-              t.minute(edit.minutes);
+              t.minute(edit.minute);
 
               while (task[t.valueOf()]) {
                 t.add(1, 'ms');
